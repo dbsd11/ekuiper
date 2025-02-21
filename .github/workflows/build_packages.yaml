@@ -55,7 +55,7 @@ jobs:
         --env KUIPER_SOURCE='/ekuiper' \
         --platform ${{ matrix.arch }} \
         ghcr.io/lf-edge/ekuiper/base:${{ matrix.golang }}-${{ matrix.os }} \
-        bash -euc "git config --global --add safe.directory /ekuiper && make pkg && make pkg_core && make pkg_full"
+        bash -euc "git config --global --add safe.directory /ekuiper && make pkg_full"
     - name: create sha file
       run: |
         cd _packages && for var in $(ls); do sudo bash -c "echo $(sha256sum $var | awk '{print $1}') > $var.sha256"; done && cd -
