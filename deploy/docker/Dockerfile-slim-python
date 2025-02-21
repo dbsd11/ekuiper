@@ -21,7 +21,7 @@ WORKDIR /go/kuiper
 
 RUN make build_with_edgex_and_script
 
-FROM python:3.8.12-slim-bullseye
+FROM python:3.14.0a2-slim-bookworm
 
 COPY --from=builder /go/kuiper/_build/kuiper-* /kuiper/
 COPY ./deploy/docker/docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
@@ -30,7 +30,7 @@ COPY ./sdk/python /sdk/python
 ARG DEBIAN_FRONTEND="noninteractive"
 
 RUN apt-get update \
-    && apt-get install -y wget cmake libffi-dev git\
+    && apt-get install -y wget cmake libffi-dev=3.4.6 git\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
