@@ -160,6 +160,7 @@ jobs:
       matrix:
         plugin:
           - sinks/kafka
+          - sources/kafka
         arch: ${{fromJson(needs.prepare.outputs.arch)}}
         os:
           - [ debian, "slim" ]
