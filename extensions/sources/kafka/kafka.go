@@ -21,3 +21,5 @@ import (
 )
 
 func Kafka() api.Source { return kafka.GetSource() }
+
+func KafkaLookup api.Source { return kafka.GetSource() }
